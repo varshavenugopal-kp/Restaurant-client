@@ -100,7 +100,7 @@ const Home = () => {
 
         <div>
 
-<div className='grid grid-cols-5 gap-4  p-10'>
+<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 '>
   {
     data?.map((rest) => (
     //   <div className='h-72 w-56 border border-black'>
@@ -126,7 +126,7 @@ const Home = () => {
     
   {/* </div> */}
   <div className="absolute bg-gray-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
-    <span className="text-lime-400 font-bold text-xs">{rest?.name}</span>
+    <span className="text-slate-900 font-bold text-sm">{rest?.name}</span>
    
     {/* <span className="text-gray-800 font-bold text-3xl">Cheat Sheet</span> */}
     <p className="text-neutral-800">{rest?.description}</p>
