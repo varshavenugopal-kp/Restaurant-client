@@ -53,9 +53,9 @@ const Add = ({setAddOpen}) => {
    
 
     const handleAdd = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
     try {
-        const { data } = await api.post('http://localhost:8000/add', { ...pdata, image: fileUrl });
+        const { data } = await api.post('/add', { ...pdata, image: fileUrl });
         // setData((prevData) => [...prevData, data]);
         modalClose()
         
@@ -64,7 +64,7 @@ const Add = ({setAddOpen}) => {
         console.error('Error occurred while adding data:', error);
     }
     }
-
+console.log(pdata,"fghjkjhgfghjkjhgf");
   return (
     <div>
        <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -82,7 +82,7 @@ const Add = ({setAddOpen}) => {
     </div>
 
 
-    <form className=''>
+    <form className='' onSubmit={handleAdd}>
         <div className='w-full mt-5'>
            
 
@@ -163,7 +163,7 @@ Select Priority
                         <div className="loader__circle"></div>
                     </div>
                     :
-                    <button className='bg-sky-950 text-white py-2 px-6 text-sm rounded-md' onClick={handleAdd} >Add</button>
+                    <button className='bg-sky-950 text-white py-2 px-6 text-sm rounded-md' >Add</button>
                 
                 }
             
