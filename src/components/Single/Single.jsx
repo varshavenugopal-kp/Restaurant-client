@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { api } from '../../services/axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const Single = () => {
+const Single = ({selectOpen,restId}) => {
     const [data,setData]=useState()
     const closeModal = () => {
         selectOpen(false);
@@ -10,8 +13,8 @@ const Single = () => {
         fetchData()
     },[])
     const fetchData=(async()=>{
-       
-        const response = await axios.get(`http://localhost:8000/single/${taskId}`)
+       console.log("kkkkkkkkkkkkkkkkkkkkkkk",restId);
+        const response = await api.get(`http://localhost:8000/single/${restId}`)
        
         setData(response.data.data[0])
     })
@@ -33,16 +36,16 @@ const Single = () => {
                             <img className="h-2/4 w-full" src={data.image} alt="Task Image" />
                         </div>
                         <div>
-                            <p className="text-lg font-semibold">{data.heading}</p>
+                            <p className="text-lg font-semibold">{data.name}</p>
                         </div>
                         <div>
                             <p className="text-lg">{data.description}</p>
                         </div>
                         <div>
-                            <p className="text-xs">{data.date ? new Date(data.date).toISOString().split('T')[0] : ''}</p>
+                            <p className="text-xs">{data.address}</p>
                         </div>
                         <div>
-                            <p className="text-xs">{data.time}</p>
+                            <p className="text-xs">{data.contact}</p>
                         </div>
                       
                     </div>

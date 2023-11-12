@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { api } from '../../services/axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import Add from '../Add/Add'
+import Single from '../Single/Single'
+import Edit from '../Edit/Edit'
+import '../Home/Home.css'
 
 const Home = () => {
     const  [addOpen,setAddOpen]=useState(false)
@@ -38,6 +44,7 @@ const Home = () => {
         setEditOpen(true)
       }
       const handleSelect=(restId)=>{
+        console.log("kkkkk");
           selectOpen(restId)
           setrestId(restId)
       }
@@ -54,7 +61,8 @@ const Home = () => {
   
      const handledelete=async(restId)=>{
       try {
-        await api.delete('/delete', { id: restId });
+        console.log(restId,"kkkkoooooooooooooooooo");
+        await api.post('/delete', { id: restId });
         const updatedData = data.filter((rest) => rest.id !== restId);
         setData(updatedData);
       } catch (error) {
@@ -95,19 +103,43 @@ const Home = () => {
 <div className='grid grid-cols-5 gap-4  p-10'>
   {
     data?.map((rest) => (
-      <div className='h-72 w-56 border border-black'>
-        <img className='h-2/3 w-full ' src={rest?.image} key={rest?.id} onClick={()=>handleSelect(rest?.id)}></img>
-        <p className='p-3 text-lg font-semibold'>{rest?.heading}</p>
+    //   <div className='h-72 w-56 border border-black'>
+    //     <img className='h-2/3 w-full ' src={rest?.image} key={rest?.id} onClick={()=>handleSelect(rest?.id)}></img>
+    //     <p className='p-3 text-lg font-semibold'>{rest?.heading}</p>
        
-       <div className='px-2 flex justify-between'>
-       <div className=''><FontAwesomeIcon icon={faPenToSquare} className='text-sm text-left' key={rest?.id} onClick={()=>handleClick(rest?.id)}/></div>
-       <div className=''><FontAwesomeIcon icon={faTrashCan} className='text-sm text-left'key={rest?.id} onClick={()=>handledelete(rest?.id)} /></div>
+    //    <div className='px-2 flex justify-between'>
+    //    <div className=''><FontAwesomeIcon icon={faPenToSquare} className='text-sm text-left' key={rest?.id} onClick={()=>handleClick(rest?.id)}/></div>
+    //    <div className=''><FontAwesomeIcon icon={faTrashCan} className='text-sm text-left'key={rest?.id} onClick={()=>handledelete(rest?.id)} /></div>
     
-        </div>
+    //     </div>
         
 
       
-      </div>
+    //   </div>
+    <div className="relative group duration-500 cursor-pointer group overflow-hidden text-gray-50 bg-[rgba(255,255,255,0.25)] h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+ 
+  {/* <div className="w-56 h-72 bg-lime-400 text-gray-800"> */}
+
+  <img className='h-full w-full ' src={rest?.image} key={rest?.id} onClick={()=>handleSelect(rest?.id)}></img>
+    
+  
+    
+  {/* </div> */}
+  <div className="absolute bg-gray-50 -bottom-24 w-56 p-3 flex flex-col gap-1 group-hover:-bottom-0 group-hover:duration-600 duration-500">
+    <span className="text-lime-400 font-bold text-xs">{rest?.name}</span>
+   
+    {/* <span className="text-gray-800 font-bold text-3xl">Cheat Sheet</span> */}
+    <p className="text-neutral-800">{rest?.description}</p>
+    <div className='px-2 flex justify-between'>
+    <div className=''><FontAwesomeIcon icon={faPenToSquare} className='text-sm text-left text-black' key={rest?.id} onClick={()=>handleClick(rest?.id)}/></div>
+   <div className=''><FontAwesomeIcon icon={faTrashCan} className='text-sm text-left text-black'key={rest?.id} onClick={()=>handledelete(rest?.id)} /></div>
+    
+    </div>
+   
+  </div>
+  
+
+</div>
    ))
   }
 </div>

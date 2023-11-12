@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { api } from '../../services/axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleXmark, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-const Add = () => {
+const Add = ({setAddOpen}) => {
     const [fileUrl, setUrl] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [pdata, setData] = useState()
@@ -38,7 +41,7 @@ const Add = () => {
         datas.append('upload_preset', 'user_doc')
         datas.append('cloud_name', "dn6cqglmo")
 
-        const { data } = await axios.post("https://api.cloudinary.com/v1_1/dn6cqglmo/image/upload", datas)
+        const { data } = await api.post("https://api.cloudinary.com/v1_1/dn6cqglmo/image/upload", datas)
         console.log("urls:", data);
 
 
@@ -52,7 +55,7 @@ const Add = () => {
     const handleAdd = async (e) => {
         e.preventDefault();
     try {
-        const { data } = await axios.post('http://localhost:8000/add', { ...pdata, image: fileUrl });
+        const { data } = await api.post('http://localhost:8000/add', { ...pdata, image: fileUrl });
         // setData((prevData) => [...prevData, data]);
         modalClose()
         

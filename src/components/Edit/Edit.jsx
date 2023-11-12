@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { api } from '../../services/axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleXmark, faPenToSquare, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-const Edit = () => {
+const Edit = ({setEditOpen,restId}) => {
     const [data,setData]=useState({})
     const [fileUrl, setUrl] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -23,7 +26,7 @@ const Edit = () => {
         datas.append('upload_preset', 'user_doc')
         datas.append('cloud_name', "dn6cqglmo")
 
-        const { data } = await axios.post("https://api.cloudinary.com/v1_1/dn6cqglmo/image/upload", datas)
+        const { data } = await api.post("https://api.cloudinary.com/v1_1/dn6cqglmo/image/upload", datas)
         console.log("urls:", data);
 
 
@@ -47,7 +50,7 @@ const Edit = () => {
         fetchData()
     },[])
     const fetchData=(async()=>{
-        const response = await axios.get(`http://localhost:8000/single/${taskId}`)
+        const response = await api.get(`http://localhost:8000/single/${restId}`)
         
         setData(response.data.data[0])
     })
@@ -56,16 +59,16 @@ const Edit = () => {
         e.preventDefault();
   try {
     console.log("Handling edit...", data); 
-    const formattedDate = new Date(data.date).toISOString().slice(0, 19).replace('T', ' ');
+    
     let updatedData
     if(fileUrl){
-        updatedData = { ...data, date: formattedDate,image:fileUrl };
+        updatedData = { ...data,image:fileUrl };
     }else{
-       updatedData = { ...data, date: formattedDate };
+       updatedData = { ...data };
     }
      
      
-    const { data: responseData } = await axios.post('http://localhost:8000/editData',{...updatedData,id:taskId});
+    const { data: responseData } = await api.post('http://localhost:8000/editData',{...updatedData,id:restId});
     
     
     console.log(responseData);
