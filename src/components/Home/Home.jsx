@@ -127,7 +127,7 @@ const Home = () => {
 
       
     //   </div>
-    <div className="relative group duration-500 cursor-pointer group overflow-hidden text-gray-50 bg-[rgba(255,255,255,0.25)] h-72 w-56 rounded-2xl hover:duration-700 duration-700">
+    <div className="relative group duration-500 cursor-pointer group overflow-hidden text-gray-50 bg-[rgba(255,255,255,0.25)] h-80 w-56 rounded-2xl hover:duration-700 duration-700">
  
   {/* <div className="w-56 h-72 bg-lime-400 text-gray-800"> */}
 

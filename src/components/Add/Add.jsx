@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { api } from '../../services/axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faXmark } from '@fortawesome/free-solid-svg-icons'
+import '../Add/Add.css'
 
 const Add = ({setAddOpen}) => {
     const [fileUrl, setUrl] = useState(null)
@@ -103,7 +104,7 @@ console.log(pdata,"fghjkjhgfghjkjhgf");
            
 
            <div>
-               <input type='number' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='contact' onChange={addRest} placeholder='Enter name' required></input>
+               <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='contact' onChange={addRest} placeholder='Enter Phone' required></input>
            </div>
        </div>
        <div className='w-full mt-5'>

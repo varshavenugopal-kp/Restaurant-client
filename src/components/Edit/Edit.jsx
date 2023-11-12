@@ -107,7 +107,7 @@ const Edit = ({setEditOpen,restId}) => {
           
 
             <div>
-                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9'  name='heading' value={data.name} onChange={addDetails} ></input>
+                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9'  name='name' value={data.name} onChange={addDetails} ></input>
             </div>
         </div>
 
@@ -120,14 +120,14 @@ const Edit = ({setEditOpen,restId}) => {
         <div className='w-full mt-5'>
            
             <div>
-                <input type='number' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='phone' value={data.contact} onChange={addDetails}></input>
+                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='phone' value={data.contact} onChange={addDetails}></input>
             </div>
         </div>
         <div className='w-full mt-5'>
         <div className='w-full mt-5'>
         
         <div className='w-full'>
-            <textarea name='address' className='shadow appearance-none border rounded w-full py-2 px-3 h-24' value={data.address} onChange={addDetails}></textarea>
+            <textarea name='description' className='shadow appearance-none border rounded w-full py-2 px-3 h-24' value={data.description} onChange={addDetails}></textarea>
         </div>
     </div>
            
