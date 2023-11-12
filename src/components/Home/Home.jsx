@@ -77,10 +77,21 @@ const Home = () => {
       <nav className='shadow-md bg-sky-950 h-20'>
             
         </nav>
+        <div>
+                <h1 className='text-2xl font-bold text-red-950 items-center pt-3'>RESTAURANTS IN INDIA</h1>
+            </div>
+            <div>
+                <p className='text-justify p-5 mx-auto'>
+                India is also famous for its distinctive cuisine, which is uniquely different from other parts of Indian cooking. India cuisine truly reflects the rich diversity of its agricultural products. Religious and cultural factors also play a significant role in the variety of cuisine in India. Coconut, an integral part of their lives, is used in various forms in cuisine. A second essential ingredient is seafood, which is used in Kerala's traditional cuisine. Curry leaves, tamarind, chilies, mustard seeds, and asafetida are the vital ingredients of spicy Kerala dishes. Rice is the staple food of Keralites and is eaten in different forms in the main course, snacks, and breakfast.
+                </p>
+            </div>
+
         <div className='flex justify-between p-4'>
         <div className='w-32 h-10 bg-sky-900 mt-7 cursor-pointer' onClick={()=>modalOpen()}><h1 className='text-white pt-2 px-2'>Add Restaurant</h1></div>
         <div>
+        
         <div className='w-full mt-5'>
+            
                             {/* <div>
                                 <label className=''>Priority</label>
                             </div> */}
