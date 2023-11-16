@@ -58,7 +58,7 @@ const Home = () => {
     const handledelete = async (restId) => {
         try {
 
-            await api.post('/delete', { id: restId });
+            await api.delete('/delete', { id: restId });
             const updatedData = data.filter((rest) => rest.id !== restId);
             setData(updatedData);
         } catch (error) {

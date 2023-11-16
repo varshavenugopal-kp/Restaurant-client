@@ -49,11 +49,11 @@ const Edit = ({ setEditOpen, restId }) => {
         fetchData()
     }, [])
     const fetchData = (async () => {
-        const response = await api.get(`http://localhost:8000/single/${restId}`)
-
-        setData(response.data.data[0])
+        const response = await api.get(`/single/${restId}`)
+        console.log("ooooooooooooooooooooooooooooooooooooooo",response);
+        setData(response.data.data)
     })
-
+   console.log("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",data);
     const handleEdit = async (e) => {
         e.preventDefault();
         try {
@@ -67,7 +67,7 @@ const Edit = ({ setEditOpen, restId }) => {
             }
 
 
-            const { data: responseData } = await api.post('http://localhost:8000/editData', { ...updatedData, id: restId });
+            const { data: responseData } = await api.patch('/editData', { ...updatedData, id: restId });
 
 
             console.log(responseData);
@@ -94,7 +94,7 @@ const Edit = ({ setEditOpen, restId }) => {
                             <button onClick={() => closeModal()}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
                         </div>
                         <div className='text-center'>
-                            <h1 className='font-bold text-2xl'>Add a Task</h1>
+                            <h1 className='font-bold text-2xl'>Edit Restaurant</h1>
 
                         </div>
 
@@ -106,39 +106,31 @@ const Edit = ({ setEditOpen, restId }) => {
 
 
                             <div>
-                                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='name' value={data.name} onChange={addDetails} ></input>
+                                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='name' value={data?.name} onChange={addDetails} ></input>
                             </div>
                         </div>
 
                         <div className='w-full mt-5'>
 
                             <div className='w-full'>
-                                <textarea name='address' className='shadow appearance-none border rounded w-full py-2 px-3 h-24' value={data.address} onChange={addDetails}></textarea>
+                                <textarea name='address' className='shadow appearance-none border rounded w-full py-2 px-3 h-24' value={data?.address} onChange={addDetails}></textarea>
                             </div>
                         </div>
                         <div className='w-full mt-5'>
 
                             <div>
-                                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='phone' value={data.contact} onChange={addDetails}></input>
+                                <input type='text' className='shadow appearance-none border rounded w-full py-2 px-3 h-9' name='contact' value={data?.contact} onChange={addDetails}></input>
                             </div>
                         </div>
                         <div className='w-full mt-5'>
                             <div className='w-full mt-5'>
 
                                 <div className='w-full'>
-                                    <textarea name='description' className='shadow appearance-none border rounded w-full py-2 px-3 h-24' value={data.description} onChange={addDetails}></textarea>
+                                    <textarea name='description' className='shadow appearance-none border rounded w-full py-2 px-3 h-24' value={data?.description} onChange={addDetails}></textarea>
                                 </div>
                             </div>
 
 
-                            {/* <select name="priority" className="w-full h-10 border-2" value={data.priority} onChange={addDetails}>
-<option value="" disabled selected hidden>
-Select Priority
-</option>
-<option value="Low">Low</option>
-<option value="Medium">Medium</option>
-<option value="High">High</option>
-</select> */}
                         </div>
 
 
@@ -155,7 +147,7 @@ Select Priority
                                         <FontAwesomeIcon className='fixed text-sm' icon={faPenToSquare} />
                                     </label>
                                     <input id="file_upload" type="file" accept="image/*" name="file_upload" className="hidden" onChange={handleFileChange} />
-                                    <img src={data.image} className='pt-6 h-24  bg-gray-300' />
+                                    <img src={data?.image} className='pt-6 h-24  bg-gray-300' />
                                 </div>
                         }
                         <button className='bg-sky-950 text-white py-2 px-6 text-sm rounded-md' >Edit</button>

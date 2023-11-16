@@ -19,7 +19,7 @@ const Single = ({ selectOpen, restId }) => {
 
         const response = await api.get(`/single/${restId}`)
 
-        setData(response.data.data[0])
+        setData(response.data.data)
     })
 
     return (
